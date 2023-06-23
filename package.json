@@ -25,22 +25,6 @@
     "xstate-typegen": "xstate typegen 'src/**/*.ts?(x)' --watch",
     "build": "tsc && vite build"
   },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^4.9.5 || ^5.0.0"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    },
-    "typescript": {
-      "optional": true
-    }
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
