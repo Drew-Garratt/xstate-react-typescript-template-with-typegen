@@ -16,7 +16,10 @@
     "dev": {
       "name": "dev",
       "command": "yarn dev",
-      "runAtStart": true
+      "runAtStart": true,
+      "preview": {
+        "port": 3000
+      }
     },
     "start": {
       "name": "start",
@@ -26,16 +29,6 @@
     "build": {
       "name": "build",
       "command": "yarn build",
-      "runAtStart": false
-    },
-    "test": {
-      "name": "test",
-      "command": "yarn test",
-      "runAtStart": false
-    },
-    "eject": {
-      "name": "eject",
-      "command": "yarn eject",
       "runAtStart": false
     }
   }
