@@ -1,29 +1,29 @@
 import "./styles.css";
-import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { createMachine, assign } from "xstate";
 import { useMachine } from "@xstate/react";
 import { inspect } from "@xstate/inspect";
 
 inspect({
-  iframe: false
+  iframe: false,
 });
 
 const toggleMachine = createMachine({
   id: "toggle",
   initial: "inactive",
+  tsTypes: {} as import("./index.typegen").Typegen0,
   context: {
-    count: 0
+    count: 0,
   },
   states: {
     inactive: {
-      on: { TOGGLE: "active" }
+      on: { TOGGLE: "active" },
     },
     active: {
       entry: assign({ count: (ctx) => ctx.count + 1 }),
-      on: { TOGGLE: "inactive" }
-    }
-  }
+      on: { TOGGLE: "inactive" },
+    },
+  },
 });
 
 function App() {
@@ -46,8 +46,10 @@ function App() {
 }
 const rootElement = document.getElementById("root");
 
-// create a root
-const root = createRoot(rootElement);
+if (rootElement) {
+  // create a root
+  const root = createRoot(rootElement);
 
-//render app to root
-root.render(<App />);
+  //render app to root
+  root.render(<App />);
+}
