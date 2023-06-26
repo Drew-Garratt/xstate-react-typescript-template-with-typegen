@@ -1,33 +1,24 @@
 import "./styles.css";
 import { createRoot } from "react-dom/client";
-import { createMachine, assign } from "xstate";
 import { useMachine } from "@xstate/react";
-import { inspect } from "@xstate/inspect";
+import { toggleMachine } from "./machines/toggleMachine";
 
-inspect({
-  iframe: false,
-});
+const devTools = import.meta.env.DEV;
 
-const toggleMachine = createMachine({
-  id: "toggle",
-  initial: "inactive",
-  tsTypes: {} as import("./index.typegen").Typegen0,
-  context: {
-    count: 0,
-  },
-  states: {
-    inactive: {
-      on: { TOGGLE: "active" },
-    },
-    active: {
-      entry: assign({ count: (ctx) => ctx.count + 1 }),
-      on: { TOGGLE: "inactive" },
-    },
-  },
-});
+/**
+ * Enable XState Dev inspect
+ *
+ * Please note Dev enviroment check is tied to Vite
+ */
+if (devTools) {
+  const { inspect } = await import("@xstate/inspect");
+  inspect({
+    iframe: false,
+  });
+}
 
 function App() {
-  const [state, send] = useMachine(toggleMachine, { devTools: true });
+  const [state, send] = useMachine(toggleMachine, { devTools });
   const active = state.matches("active");
   const { count } = state.context;
 
