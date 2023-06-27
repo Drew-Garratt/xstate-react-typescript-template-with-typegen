@@ -1,5 +1,4 @@
 import { assign, createMachine } from "xstate";
-import { invokedMachine } from "./invokedMachine";
 
 export const toggleMachine = createMachine({
   id: "toggle",
@@ -13,12 +12,9 @@ export const toggleMachine = createMachine({
       on: { TOGGLE: "active" },
     },
     active: {
-      invoke: {
-        id: "invoke",
-        src: invokedMachine,
-      },
       entry: assign({ count: (ctx) => ctx.count + 1 }),
       on: { TOGGLE: "inactive" },
     },
   },
+  predictableActionArguments: true,
 });

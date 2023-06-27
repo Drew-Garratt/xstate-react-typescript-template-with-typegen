@@ -15,9 +15,7 @@ export interface Typegen0 {
   eventsCausingActions: {};
   eventsCausingDelays: {};
   eventsCausingGuards: {};
-  eventsCausingServices: {
-    invoke: "TOGGLE";
-  };
+  eventsCausingServices: {};
   matchesStates: "active" | "inactive";
   tags: never;
 }
